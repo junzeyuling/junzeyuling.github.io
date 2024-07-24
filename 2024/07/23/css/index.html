@@ -193,7 +193,7 @@
   const ipt = document.querySelector('#search-input')
   const btn = document.querySelector('#search-btn')
   const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"css基础","path":"2024/07/23/css/"},{"title":"Hello World","path":"2024/07/20/hello-world/"},{"title":"html基础","path":"2024/07/22/html1/"},{"title":"hexo+github博客搭建","path":"2024/07/21/hexo/"}]`)
+  const posts = JSON.parse(`[{"title":"css基础","path":"2024/07/23/css/"},{"title":"Hello World","path":"2024/07/20/hello-world/"},{"title":"hexo+github博客搭建","path":"2024/07/21/hexo/"},{"title":"html基础","path":"2024/07/22/html1/"}]`)
   ipt.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -335,7 +335,7 @@
       </p>
       <p class="main-left--subtitle">
         <span>上线时间：</span>
-        <span>4天</span>
+        <span>5天</span>
       </p>
       <p class="main-left--subtitle">
         <span>当前版本：</span>
@@ -742,6 +742,237 @@
 <li>浮动元素会造成父元素高度塌陷</li>
 <li>后续元素会受到影响</li>
 </ol>
+<p><strong>清除浮动</strong></p>
+<p>（清楚浮动带来的副作用）</p>
+<ol>
+<li>父元素设置高度</li>
+<li>受影响的元素增加clear属性</li>
+<li>overflow清楚浮动</li>
+<li>伪对象方式</li>
+</ol>
+<p><strong>定位</strong></p>
+<p>position属性制定了元素的定位类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">relative</td>
+<td align="center">相对定位</td>
+</tr>
+<tr>
+<td align="center">absolute</td>
+<td align="center">绝对定位</td>
+</tr>
+<tr>
+<td align="center">fixed</td>
+<td align="center">固定定位</td>
+</tr>
+</tbody></table>
+<p>注：绝对定位和固定定位会脱离文档流</p>
+<p>设置定位之后：可以使用四个方向值进行调整位置：left、top、right、bottom</p>
+<p>相对定位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">position:relative;</span><br></pre></td></tr></table></figure>
+
+<p>绝对定位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">position:absolute;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">    .d1&#123;</span><br><span class="line">      background-color: rgb(48, 214, 240);</span><br><span class="line">      width: 300px;</span><br><span class="line">      height: 300px;</span><br><span class="line">    &#125;</span><br><span class="line">    .d2&#123;</span><br><span class="line">      background-color: red;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line">      position: absolute;</span><br><span class="line">      left: 100px;</span><br><span class="line">      top: 80px;</span><br><span class="line">  </span><br><span class="line">    &#125;</span><br><span class="line">    .d3&#123;</span><br><span class="line">     background-color: blueviolet;</span><br><span class="line">      height: 200px;</span><br><span class="line">      width: 200px;</span><br><span class="line">      position: absolute;</span><br><span class="line">      left: 50px;</span><br><span class="line">      top: 50px;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;div class=&quot;d1&quot;&gt;&lt;/div&gt;</span><br><span class="line"> &lt;div class=&quot;d2&quot;&gt;&lt;/div&gt;</span><br><span class="line"> &lt;div class=&quot;d3&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407240954111.png" alt="image-20240724095404735"></p>
+<p>固定定位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">position:fixed;</span><br></pre></td></tr></table></figure>
+
+<p>绝对定位与固定定位的区别：绝对定位的基准是页面，固定定位的基准是屏幕（类似于手机绝对定位是不同的页面的具体元素，固定定位是下面的导航栏）</p>
+<p>注：设置定位后，相对定位和绝对定位是相对于具有定位的父级元素进行位置进行调整的，如果父级元素不存在定位，则继续向上逐级寻找，直到顶层文档。</p>
+<p><strong>圆角</strong></p>
+<p>使用CSS3 <strong>border-radius</strong> 属性，可以给任何元素制作“圆角”</p>
+<p>border-radius 属性：</p>
+<ol>
+<li>四个值：第一个值为左上角，第二个值为右上角，第三个值为右下角，第四个值为左下角</li>
+<li>三个值：左上，右上和左下，右下</li>
+<li>两个值：左上与右下，右上与左下</li>
+<li>一个值：四个圆角值相同</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 15px 50px 30px 5px;</span><br><span class="line">border-radius:100%</span><br></pre></td></tr></table></figure>
+
+<p><strong>阴影</strong></p>
+<p>box-shadow向框添加一个或多个阴影。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: h-shadow v-shadow blur color;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">h-shadow</td>
+<td align="center">必选-水平阴影的位置</td>
+</tr>
+<tr>
+<td align="center">v-shadow</td>
+<td align="center">必选，垂直阴影的位置</td>
+</tr>
+<tr>
+<td align="center">blur</td>
+<td align="center">可选，模糊距离</td>
+</tr>
+<tr>
+<td align="center">color</td>
+<td align="center">可选，阴影的颜色</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: 10px 10px 5px blue</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>动画</strong></p>
+<p>动画是使元素从一种样式逐渐变化为另一种样式的效果</p>
+<p>用百分比来规划变化发生的时间，或用关键词”from”和”to”，等同于0%和100%</p>
+<p>0%是动画的开始，100%是动画的完成</p>
+<p>@keyframes创建动画</p>
+<p>使用@keyframes规则，可以用来创建动画</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@keyframes name&#123;</span><br><span class="line">	from | 0%&#123;</span><br><span class="line">		样式1</span><br><span class="line">	&#125;</span><br><span class="line">	percent&#123;</span><br><span class="line">		样式过渡</span><br><span class="line">	&#125;</span><br><span class="line">	to | 100%&#123;</span><br><span class="line">		样式结尾</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>name：动画名称，开发人员命名；</p>
+<p>percent： 为百分比，可以添加多个百分比的值；</p>
+<p><strong>animation执行动画</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animation: name duration timing-function delay iteration-count direction;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">name</td>
+<td align="center">设置动画的名称</td>
+</tr>
+<tr>
+<td align="center">duration</td>
+<td align="center">设置动画的持续时间</td>
+</tr>
+<tr>
+<td align="center">timing-function</td>
+<td align="center">设置动画效果的速率（如下）</td>
+</tr>
+<tr>
+<td align="center">delay</td>
+<td align="center">设置动画的开始时间（延时执行）</td>
+</tr>
+<tr>
+<td align="center">iteration-count</td>
+<td align="center">设置动画循环的次数，infinite为无限次数的循环</td>
+</tr>
+<tr>
+<td align="center">direction</td>
+<td align="center">设置动画播放的方向（如下）</td>
+</tr>
+<tr>
+<td align="center">animation-play-state</td>
+<td align="center">控制动画的播放状态：running代表播放，而paused代表停止播放</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">timing-function值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ease</td>
+<td align="center">逐渐变慢（默认）</td>
+</tr>
+<tr>
+<td align="center">linear</td>
+<td align="center">匀速</td>
+</tr>
+<tr>
+<td align="center">ease-in</td>
+<td align="center">加速</td>
+</tr>
+<tr>
+<td align="center">ease-out</td>
+<td align="center">减速</td>
+</tr>
+<tr>
+<td align="center">ease-in-out</td>
+<td align="center">先加速后减速</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">direction值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">normal</td>
+<td align="center">默认值为normal表示向前播放</td>
+</tr>
+<tr>
+<td align="center">alternate</td>
+<td align="center">动画播放在第偶数次向前播放，第奇数次向反方向播放</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line"></span><br><span class="line">      div&#123;</span><br><span class="line">        height: 200px;</span><br><span class="line">        width: 200px;</span><br><span class="line">        background-color: azure;</span><br><span class="line">        animation: do 3s  linear 0s  infinite;</span><br><span class="line">      &#125;</span><br><span class="line">      div:hover&#123;</span><br><span class="line">       animation-play-state: paused;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    @keyframes do&#123;</span><br><span class="line">      0%&#123;</span><br><span class="line">      background-color: red;</span><br><span class="line">      &#125;</span><br><span class="line">      50%&#123;</span><br><span class="line">        background-color: blueviolet;</span><br><span class="line">      &#125;</span><br><span class="line">      100%&#123;</span><br><span class="line">        background-color: bisque;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码实现一个正方形渐变颜色的效果</p>
+<p><strong>媒体查询</strong></p>
+<p>媒体查询可以使得页面在不同的终端设备下达到不同的效果</p>
+<p>媒体查询会根据设备的大小自动设别加载不同的样式</p>
+<p><strong>设置mata标签</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用设备的宽度作为视图宽度并禁止初始的缩放。在&lt;head&gt;标签里加入这个meta标签</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1,maximum-scale=1,use-scalable=no&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参数讲解：</p>
+<ol>
+<li>width&#x3D;device-width宽度等于当前设备的宽度</li>
+<li>inital-scale 初始的缩放比例（默认设置为1.0）</li>
+<li>maximum-scale 允许用户缩放到的最大比例（默认设置为1.0）</li>
+<li>user-scalable 用户是否可以手动缩放（默认设置为no）</li>
+</ol>
+<p>具体应用</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241119217.png" alt="image-20240724111937023"></p>
+<p>CSS Sprite(又名CSS精灵图、CSS雪碧图)，是一种网页图片处理方式。</p>
+<p><strong>优点</strong></p>
+<ol>
+<li>减少图片的字节</li>
+<li>减少网页的http请求，从而大大的提高页面的性能</li>
+</ol>
+<p><strong>原理</strong></p>
+<ol>
+<li>通过background-image引入背景图片</li>
+<li>通过background-position吧背景图片移动到自己需要的位置</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241128498.png" alt="image-20240724112821198"></p>
+<p><strong>字体图标</strong></p>
+<p><strong>优点</strong></p>
+<ol>
+<li>轻量性：加载速度快，减少htto请求</li>
+<li>灵活性：可以利用CSS设置大小颜色等</li>
+<li>兼容性：网页字体支持所有现代浏览器，包括IE低版本</li>
+</ol>
+<p><strong>使用字体图标</strong></p>
+<ol>
+<li>注册账号并登录</li>
+<li>选取图标或搜索图标</li>
+<li>添加购物车</li>
+<li>下载代码</li>
+<li>选择font-class引用</li>
+</ol>
+<p>引入和使用的语法</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241139300.png" alt="image-20240724113939085"></p>
 
     </article>
     
