@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——梦的起点 | Hexo</title>
+  <title>我的技术与生活——”js基础“ | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——梦的起点`
+    document.title = `我的技术与生活——”js基础“`
   </script>
 <meta name="generator" content="Hexo 7.3.0"></head>
 
@@ -351,25 +351,126 @@
 
 <div class="article-container">
   <div class="article">
-    <h1 class="article-title">梦的起点</h1>
+    <h1 class="article-title">”js基础“</h1>
     <div class="article-info">
       <div class="article-info--item">
         <div class="article-info--info">
           
+          <div class="article-info--categories">
+            <span>分类：</span>
+            <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+          </div>
           
-          <p class="article-info--date">日期：2024-07-20 18:13:49</p>
+          
+          <div class="article-info--tags">
+            <span>标签：</span>
+            <a class="tag-link" href="/tags/js/" rel="tag">js</a>
+          </div>
+          
+          <p class="article-info--date">日期：2024-07-24 11:49:20</p>
         </div>
         <img src="/imgs/default-cover.webp" alt="" class="article-cover">
       </div>
     </div>
     <article class="article-content markdown-body">
-      <p>图床立，博客初起时！</p>
+      <p><strong>JavaScript介绍</strong></p>
+<p>JavaScript是一种轻量级的脚本语言（脚本语言，指它不具备开发操作系统的能力，只能用来写控制其他大型应用程序的“脚本”。）</p>
+<p>JavaScript是一种嵌入式(embedded)语言。它本身提供核心语法不是很多。</p>
+<p><strong>学习JavaScript的作用</strong></p>
+<ol>
+<li>操控浏览器</li>
+<li>广泛使用领域</li>
+<li>易学性</li>
+</ol>
+<p>JavaScript和ECMAScript的关系</p>
+<p>ECMAScript和JavaScript的关系是，前者是后者的规格，后者是前者的一种实现。在日常场合，这两个词是可以互换的。</p>
+<p><strong>JavaScript版本</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241553607.png"></p>
+<p>JavaScript程序的单位是行(line)，也就是一行一行的执行。一般情况下，每一行就是一个语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var num =10;</span><br></pre></td></tr></table></figure>
+
+<p>语句以分号结尾，一个分号就表示一个语句的结束</p>
+<p><strong>标识符</strong></p>
+<p>标识符（indentifiler）指的是用来识别各种值的合法名称。最常见的标识符就是变量名</p>
+<p>标识符是由：字母、美元符号（$)、下划线（_)和数字组成，其中数字不能开头</p>
+<p>注：</p>
+<p>中文是合法的标识符。可以用作变量名（不推荐）</p>
+<p><strong>JavaScript保留关键字</strong></p>
+<p>一下关键字不需要强行记忆</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241603024.png" alt="image-20240724160322942"></p>
+<p>变量重新赋值</p>
+<p>变量提升</p>
+<p>JavaScript引擎的工作方式是，先解析代码，获取所有被声明的变量，然后在一行一行的执行。这将造成所有的变量声明语句都会被提升到代码头部，这叫做变量提升（hoisting）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(num);</span><br><span class="line">var num=10;</span><br></pre></td></tr></table></figure>
+
+<p>显示效果（undefined）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241613204.png" alt="image-20240724161326067"></p>
+<p><strong>JavaScript引入到文件</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241615628.png" alt="image-20240724161528433"></p>
+<p>嵌入到html文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;script&gt;</span><br><span class="line">			var age =20</span><br><span class="line">		&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>引入到本地独立JS文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;./static/xxx.js&quot;&gt;      &lt;/script&gt;</span><br><span class="line">&lt;body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>引入网络来源文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;script src=&quot;http://code.jqurey.com/jquery1.2.1.min.js&quot;&gt;      &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>JavaScript注释与常见输出方式</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241625127.png" alt="image-20240724162512047"></p>
+<p>JavaScript注释</p>
+<p>源码中注释是不被引擎所解释的，它的作用是对代码进行解释。Javascript提供两种注释的写法：一种是单行注释，用&#x2F;&#x2F;起头；另一种是多行注释放在&#x2F;和&#x2F;之间。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 单行注释</span><br><span class="line">/*</span><br><span class="line">多行注释</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>嵌入在HTML文件中的注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--注释--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript输出方式</p>
+<p>JavaScript输出方式</p>
+<p>JavaScript有很多输出方式，都可以让我们更直观的看到程序运行的结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//在浏览器中弹出一个对话框，然后把要输出的内容展示出来,alter都是把要输出的内容首先转换为字符串然后再输出</span><br><span class="line">alter(&quot;要输出的内容&quot;);</span><br><span class="line">document.write(&quot;要输出的内容&quot;);</span><br><span class="line">//在控制台输出的内容</span><br><span class="line">console.log(&quot;要输出的内容&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据类型</strong></p>
+<p>数据类型的分类</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241634336.png" alt="image-20240724163434259"></p>
+<p>JavaScript语言的每一个值，都属于某一种数据类型。javaScript的数据类型，共有六种。（ES6又新增了第七种Symbol类型的值和第八种BigInt类型）</p>
+<p><strong>原始类型（基础类型）</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241635879.png" alt="image-20240724163509812"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var age =20;</span><br><span class="line">var name=&quot;尚学堂&quot;;</span><br><span class="line">var learn = true;</span><br></pre></td></tr></table></figure>
+
+<p>合成类型（复合类型）</p>
+<p>对象：因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241637567.png" alt="image-20240724163757511"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var user =&#123;</span><br><span class="line">name:&quot;教师&quot;,</span><br><span class="line">age:20,</span><br><span class="line">learn:true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p>undefined和null，一般将它们看成两个特殊值。</p>
+<p><strong>typeof运算符</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junzeyuling/drawingbed@img/img/202407241643234.png" alt="image-20240724164318125"></p>
+<p>JS有三种方法可以确定一个值到底是什么类型。</p>
+<p>数值返回number</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof 123 //&quot;number&quot;</span><br></pre></td></tr></table></figure>
+
+<p>字符串返回string</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof &#x27;123&#x27;  //&quot;string&quot;</span><br></pre></td></tr></table></figure>
+
+<p>布尔值返回boolean</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof false //&quot;boolean&quot;</span><br></pre></td></tr></table></figure>
+
+<p>对象返回boolean</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof false //&quot;boolean&quot;</span><br></pre></td></tr></table></figure>
+
+<p>对象返回object</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof &#123;&#125; //&quot;object&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>null和undefined的区别</strong></p>
+<p>null与undefined都可以表示”没有“，含义近似。将一个变量赋值为undefined或null，作用几乎没有区别。具体为什么要分成两个与历史有关</p>
 
     </article>
     
     <div class="read-nums">
       <!-- id 将作为查询条件 -->
-      <span id="log/dream.html" class="leancloud_visitors" data-flag-title="Your Article Title">
+      <span id="2024/07/24/js/" class="leancloud_visitors" data-flag-title="Your Article Title">
         <em class="post-meta-item-text">浏览量</em>
         <i class="leancloud-visitors-count"></i>
       </span>
@@ -388,6 +489,16 @@
         
       </div>
       
+        <div class="catelogue catelogue-2">
+           
+          
+            <p>
+              <span>下一篇</span>
+              <a href="/2024/07/23/css/">css基础</a>
+            </p>
+          
+        </div>
+      
     </div>
   </div>
 </div>
@@ -405,7 +516,7 @@
     recordIP: config.recordIP,
     visitor: config.visitor,
     enableQQ: config.enableQQ,
-    path: 'log/dream.html'
+    path: '2024/07/24/js/'
   })
 </script>
 
